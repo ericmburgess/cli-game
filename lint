@@ -2,6 +2,7 @@
 
 set -e
 
+uvx ruff format .
 uvx ruff check . --fix
 uvx isort .
 uv run mypy .

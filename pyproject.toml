@@ -15,6 +15,14 @@ dev = [
     "pyupgrade>=3.20.0",
 ]
 
+[build-system]
+requires = ["setuptools>=42"]
+build-backend = "setuptools.build_meta"
+packages = ["cli_game"]
+
+[tool.setuptools.package-dir]
+cli_game = "cli_game"
+
 [tool.isort]
 profile = "black"
 
@@ -26,3 +34,4 @@ verboseOutput = true
 [tool.ruff]
 lint.select = ["UP", "UP007"]
 target-version = "py313"
+line-length = 100

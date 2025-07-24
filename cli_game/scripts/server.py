@@ -33,7 +33,7 @@ class GameServer:
             with open(self.cmd_pipe) as f:
                 command = f.read().strip()
 
-            if command == "__shutdown__":
+            if command == "exit":
                 response = "Server shutting down"
                 with open(self.resp_pipe, "w") as f:
                     f.write(response)

@@ -72,9 +72,9 @@ CORRESPONDING WORKLOG ENTRY
 
 **Instructions:**
 - The top line from the work log is repeated.
-- The tasks (only their descripts) are listed.
+- The tasks (only their descriptions) are listed.
 - Validation is omitted.
-- The outcome is included in its entirety.
+- The outcome is omitted.
 
 # Development Session #1234 (2027-07-22): Streamlining authentication
 
@@ -83,12 +83,4 @@ CORRESPONDING WORKLOG ENTRY
  ✅ Understand how to retrieve the JWT token
  ✅ Implement token retrieval in the main project
  ✅ Automatic token refreshing
-
-## Outcome
-
-The goal of streamlining authentication was fully accomplished. The UX for
-authentication was greatly improved:
-
-- The user is no longer required to manually fetch the JWT token.
-- Token expiration is handled transparently.
 

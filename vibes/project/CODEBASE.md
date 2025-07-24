@@ -18,8 +18,8 @@ CLI learning game that teaches real Linux skills through progressive command dis
 - `cli_game/` - Main package
   - `models.py` - Model layer (FileSystem, Shell, Host) with full type annotations
   - `controller.py` - Controller layer (CommandParser, GameLoop) with persistent history
-  - `game_state.py` - Game state persistence with JSON serialization
-  - `constants.py` - Shared configuration (data directory paths)
+  - `game_state.py` - Game state persistence with JSON serialization (shell state only)
+  - `constants.py` - Shared configuration (data directory paths, filesystem root)
   - `scripts/` - Entry point scripts
     - `main.py` - Interactive GameLoop
     - `server.py` - Long-running game server using named pipes
@@ -32,7 +32,7 @@ CLI learning game that teaches real Linux skills through progressive command dis
 ## Architecture
 
 **MVC Pattern:**
-- **Model**: FileSystem (data operations), Shell (environment state), Host (machine state)
+- **Model**: FileSystem (real file operations under ~/.cli-game/fs/), Shell (environment state), Host (machine state)
 - **View**: Command implementations (ls, pwd, etc.) - to be implemented
 - **Controller**: prompt-toolkit interface + argparse command parsing
 
