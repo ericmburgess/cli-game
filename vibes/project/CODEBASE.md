@@ -15,12 +15,17 @@ CLI learning game that teaches real Linux skills through progressive command dis
 
 ## Structure
 
-- `main.py` - Entry point, runs interactive GameLoop
-- `server.py` - Long-running game server using named pipes
-- `client.py` - Command-line client for non-blocking interaction
 - `cli_game/` - Main package
-  - `models.py` - Model layer (FileSystem, Shell, Host)
-  - `controller.py` - Controller layer (CommandParser, GameLoop)
+  - `models.py` - Model layer (FileSystem, Shell, Host) with full type annotations
+  - `controller.py` - Controller layer (CommandParser, GameLoop) with persistent history
+  - `game_state.py` - Game state persistence with JSON serialization
+  - `constants.py` - Shared configuration (data directory paths)
+  - `scripts/` - Entry point scripts
+    - `main.py` - Interactive GameLoop
+    - `server.py` - Long-running game server using named pipes
+    - `client.py` - Command-line client for non-blocking interaction
+- `lint` - Executable script for comprehensive code quality checks
+- `.mypy.ini` - Strict type checking configuration
 - `scratch/` - Development testing scripts
 - `vibes/` - AI coding framework (not part of main codebase)
 
@@ -40,10 +45,13 @@ CLI learning game that teaches real Linux skills through progressive command dis
 
 ## Tooling
 
-- Python 3.13+ with prompt-toolkit, mypy
-- argparse for command parsing
-- Git version control with vibes framework for AI-assisted development
+- Python 3.13 with prompt-toolkit for terminal interface
+- Modern type system with strict mypy configuration and full type annotations
+- Comprehensive linting: ruff (formatting/linting), isort (imports), mypy (types)
+- Single `./lint` command for all code quality checks with auto-fixing
+- argparse for command parsing with structured command system
+- uv for dependency management with development dependency groups
 
 ## Current Status
 
-Working command loop with `whoami` command. Client-server architecture enables AI interaction without hanging. Complete game state persistence implemented with JSON serialization and auto-save after every command. Ready for implementing filesystem operations and additional commands.
+Working command loop with `whoami` command and full type safety. Client-server architecture enables AI interaction without hanging. Complete game state persistence implemented with JSON serialization and auto-save after every command. Modern Python tooling with comprehensive code quality pipeline. Ready for implementing filesystem operations and additional commands.

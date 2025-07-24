@@ -1,7 +1,7 @@
 from cli_game.controller import GameLoop
 
 
-def main():
+def main() -> None:
     game = GameLoop()
     game.run()
 

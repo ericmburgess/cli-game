@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+set -e
+
+uvx ruff check . --fix
+uvx isort .
+uv run mypy .
+

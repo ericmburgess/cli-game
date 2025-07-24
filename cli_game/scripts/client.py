@@ -2,7 +2,8 @@
 
 import sys
 
-def main():
+
+def main() -> None:
     cmd_pipe = "/tmp/game_cmd"
     resp_pipe = "/tmp/game_resp"
     
@@ -15,7 +16,7 @@ def main():
     with open(cmd_pipe, 'w') as f:
         f.write(command)
     
-    with open(resp_pipe, 'r') as f:
+    with open(resp_pipe) as f:
         response = f.read()
     
     print(response)

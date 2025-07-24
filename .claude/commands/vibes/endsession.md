@@ -13,6 +13,8 @@ Document a completed work session and prepare for the next.
 
 ## What it does
 
+- Runs `./lint` and attempts to fix any errors.
+    - **ALWAYS** confirms its fixes with the user first.
 - Documents the work done according to the instructions in
   `vibes/instructions/documenting-a-session.md`.
 - Offers to execute `git add .`, telling the user they may hit Esc and stage the files themselves if they prefer.

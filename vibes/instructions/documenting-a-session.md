@@ -10,7 +10,7 @@ level as illustrated in the samples below.
 - Document the work done in a new `vibes/worklogs/session.1234.md` file.
 - Add an entry to the work log at `vibes/worklogs/WORKLOG.md`. Add the entry at
   the TOP.
-- If needed, revise `vibes/CODDEBASE.md` to reflect changes made. KEEP IT BRIEF!
+- If needed, revise `vibes/project/CODDEBASE.md` to reflect changes made. KEEP IT BRIEF!
 
 ------------------
 SAMPLE SESSION LOG

@@ -1,18 +1,19 @@
 import json
-import os
 from pathlib import Path
-from typing import Dict, Optional
+
+from cli_game.constants import DATA_DIR
+
 from .models import Host
 
 
 class GameState:
     """Manages complete game state with multiple hosts and persistence."""
-    
-    def __init__(self, save_dir: str = "~/.cli-game"):
+
+    def __init__(self, save_dir: str = DATA_DIR):
         self.save_dir = Path(save_dir).expanduser()
         self.save_file = self.save_dir / "save.json"
-        self.hosts: Dict[str, Host] = {}
-        self.current_host: Optional[str] = None
+        self.hosts: dict[str, Host] = {}
+        self.current_host: str | None = None
         
         # Ensure save directory exists
         self.save_dir.mkdir(parents=True, exist_ok=True)
@@ -23,11 +24,11 @@ class GameState:
         if self.current_host is None:
             self.current_host = hostname
     
-    def get_host(self, hostname: str) -> Optional[Host]:
+    def get_host(self, hostname: str) -> Host | None:
         """Get a host by hostname."""
         return self.hosts.get(hostname)
-    
-    def get_current_host(self) -> Optional[Host]:
+
+    def get_current_host(self) -> Host | None:
         """Get the currently active host."""
         if self.current_host:
             return self.hosts.get(self.current_host)
@@ -79,7 +80,7 @@ class GameState:
             return False
             
         try:
-            with open(self.save_file, 'r') as f:
+            with open(self.save_file) as f:
                 data = json.load(f)
             self.from_dict(data)
             return True

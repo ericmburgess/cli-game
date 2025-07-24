@@ -1,13 +1,10 @@
-from typing import List
-
-
 class FileSystem:
     """Pure filesystem operations - no command logic."""
     
-    def __init__(self):
+    def __init__(self) -> None:
         pass
     
-    def list_directory(self, path: str) -> List[str]:
+    def list_directory(self, path: str) -> list[str]:
         """List contents of directory at path."""
         return []
     
@@ -37,7 +34,7 @@ class Shell:
         self.hostname = hostname
         self.username = username
         self.cwd = "/home/user"
-        self.command_history: List[str] = []
+        self.command_history: list[str] = []
     
     def get_prompt(self) -> str:
         """Generate shell prompt string."""
