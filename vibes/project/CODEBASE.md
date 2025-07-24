@@ -11,26 +11,37 @@
   
 ## Project Overview
 
-A new CLI game project in early development. Currently contains only project infrastructure with vibes framework for AI-assisted development.
+CLI learning game that teaches real Linux skills through progressive command discovery. Uses MVC architecture with prompt-toolkit for terminal interface.
 
 ## Structure
 
-- Root project directory with MIT license
+- `main.py` - Entry point, runs GameLoop
+- `cli_game/` - Main package
+  - `models.py` - Model layer (FileSystem, Shell, Host)
+  - `controller.py` - Controller layer (CommandParser, GameLoop)
+- `scratch/` - Development testing scripts
 - `vibes/` - AI coding framework (not part of main codebase)
-  - Project documentation and workflow management
-  - Work logs and todo tracking
+
+## Architecture
+
+**MVC Pattern:**
+- **Model**: FileSystem (data operations), Shell (environment state), Host (machine state)
+- **View**: Command implementations (ls, pwd, etc.) - to be implemented
+- **Controller**: prompt-toolkit interface + argparse command parsing
 
 ## Design principles
 
-(To be determined as project develops)
+- Linux-like terminal experience with authentic command behavior
+- Clean separation between filesystem operations and shell environment
+- Command discovery mechanics for educational progression
+- Single host implementation, designed for multiple hosts later
 
 ## Tooling
 
-- Git version control
-- Python development environment (indicated by .gitignore)
-- Vibes framework for AI-assisted development
-- Potential tools: uv, ruff, pytest (common Python stack, not yet confirmed)
+- Python 3.13+ with prompt-toolkit, mypy
+- argparse for command parsing
+- Git version control with vibes framework for AI-assisted development
 
-## Coding standards
+## Current Status
 
-(To be established as code is written)
+Working command loop with `whoami` command. Ready for implementing filesystem operations and additional commands.

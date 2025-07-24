@@ -1,5 +1,9 @@
+from cli_game.controller import GameLoop
+
+
 def main():
-    print("Hello from cli-game!")
+    game = GameLoop()
+    game.run()
 
 
 if __name__ == "__main__":
