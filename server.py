@@ -3,13 +3,19 @@
 import os
 from cli_game.controller import CommandParser
 from cli_game.models import Host
+from cli_game.game_state import GameState
 
 class GameServer:
     def __init__(self, cmd_pipe="/tmp/game_cmd", resp_pipe="/tmp/game_resp"):
         self.cmd_pipe = cmd_pipe
         self.resp_pipe = resp_pipe
-        self.host = Host()
+        self.game_state = GameState()
         self.parser = CommandParser()
+        
+        # Load existing game state or initialize default
+        if not self.game_state.load():
+            self.game_state.initialize_default()
+            self.game_state.save()
     
     def start(self):
         if os.path.exists(self.cmd_pipe):
@@ -34,6 +40,9 @@ class GameServer:
             
             response = self._execute_command(command)
             
+            # Auto-save after every command
+            self.game_state.save()
+            
             with open(self.resp_pipe, 'w') as f:
                 f.write(response)
         
@@ -47,9 +56,16 @@ class GameServer:
             return f"Command not found: {command_str}"
         
         command = parsed.get('command')
+        current_host = self.game_state.get_current_host()
+        
+        if not current_host:
+            return "No active host found"
+        
+        # Add command to history
+        current_host.shell.command_history.append(command_str)
         
         if command == 'whoami':
-            return "nobody"
+            return current_host.shell.username
         else:
             return f"Command not implemented: {command}"
 
