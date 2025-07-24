@@ -15,7 +15,9 @@ CLI learning game that teaches real Linux skills through progressive command dis
 
 ## Structure
 
-- `main.py` - Entry point, runs GameLoop
+- `main.py` - Entry point, runs interactive GameLoop
+- `server.py` - Long-running game server using named pipes
+- `client.py` - Command-line client for non-blocking interaction
 - `cli_game/` - Main package
   - `models.py` - Model layer (FileSystem, Shell, Host)
   - `controller.py` - Controller layer (CommandParser, GameLoop)
@@ -44,4 +46,4 @@ CLI learning game that teaches real Linux skills through progressive command dis
 
 ## Current Status
 
-Working command loop with `whoami` command. Ready for implementing filesystem operations and additional commands.
+Working command loop with `whoami` command. Client-server architecture enables AI interaction without hanging. Ready for implementing filesystem operations and additional commands.
